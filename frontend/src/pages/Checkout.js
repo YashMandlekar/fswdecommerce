@@ -1,6 +1,5 @@
 import { useState } from "react";
 import API from "../services/api";
-import { load } from "@cashfreepayments/cashfree-js";
 
 function Checkout() {
   const [form, setForm] = useState({
@@ -11,15 +10,13 @@ function Checkout() {
     pincode: "",
   });
 
-  console.log("Checkout page loaded");
-
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const placeOrder = async () => {
     try {
-      // 🔴 BASIC VALIDATION (you had none)
+      // ✅ VALIDATION
       if (
         !form.name ||
         !form.phone ||
@@ -31,7 +28,7 @@ function Checkout() {
         return;
       }
 
-      // 🔴 1. CREATE ORDER
+      // ✅ 1. CREATE ORDER
       const orderRes = await API.post("/orders/create", {
         shippingAddress: form,
       });
@@ -43,32 +40,20 @@ function Checkout() {
       const orderId = orderRes.data._id;
       const amount = orderRes.data.totalAmount;
 
-      // 🔴 2. CREATE PAYMENT SESSION
+      // ✅ 2. CALL BACKEND PAYMENT API
       const paymentRes = await API.post("/payment/create", {
         orderId,
         amount,
       });
 
-      const sessionId = paymentRes.data?.payment_session_id;
+      // ✅ 3. REDIRECT TO CASHFREE (FROM BACKEND LINK)
+      const paymentLink = paymentRes.data?.payment_link;
 
-      if (!sessionId) {
-        throw new Error("Session ID not received");
+      if (!paymentLink) {
+        throw new Error("Payment link not received");
       }
 
-      // 🔴 3. LOAD CASHFREE
-      const cashfree = await load({
-        mode: "sandbox",
-      });
-
-      if (!cashfree) {
-        throw new Error("Cashfree SDK failed to load");
-      }
-
-      // 🔴 4. OPEN PAYMENT
-      cashfree.checkout({
-        paymentSessionId: sessionId,
-        redirectTarget: "_self",
-      });
+      window.location.href = paymentLink;
 
     } catch (err) {
       console.error("❌ PAYMENT ERROR:", err.response?.data || err.message);
@@ -102,7 +87,7 @@ function Checkout() {
   );
 }
 
-/* 🔥 STYLES */
+/* STYLES */
 
 const box = {
   background: "#fff",
@@ -111,7 +96,7 @@ const box = {
   display: "flex",
   flexDirection: "column",
   gap: "15px",
-  maxWidth: "650px", // slightly bigger
+  maxWidth: "650px",
   width: "100%",
   margin: "auto",
   boxShadow: "0 8px 25px rgba(0,0,0,0.12)",

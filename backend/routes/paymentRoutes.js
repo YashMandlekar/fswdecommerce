@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Cashfree } = require("cashfree-pg");
-const Order = require("../models/Order");
+const Order = require("../models/order");
 
 // ✅ USE SAME WORKING INIT
 const cashfree = new Cashfree(

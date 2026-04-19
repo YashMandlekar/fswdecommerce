@@ -9,7 +9,7 @@ function ProductDetails() {
 
   useEffect(() => {
     fetchProduct();
-  }, []);
+  }, [fetchProduct]);
 
   const fetchProduct = async () => {
     const res = await API.get(`/products/${id}`);
@@ -31,6 +31,7 @@ function ProductDetails() {
       <div style={{ display: "flex", gap: "40px" }}>
         <img
           src={product.image}
+          alt={product.name}
           style={{ width: "350px", borderRadius: "10px" }}
         />
 

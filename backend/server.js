@@ -1,4 +1,3 @@
-import cors from "cors";
 require("dotenv").config();
 
 const express = require("express");
@@ -11,13 +10,10 @@ const cartRoutes = require("./routes/cartRoutes");
 
 const app = express();
 
-app.use(cors({
-  origin: "*", // Allow all origins (for development only, restrict in production)
-}))
 
 // Middleware
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
 //routes
 app.use(express.json());

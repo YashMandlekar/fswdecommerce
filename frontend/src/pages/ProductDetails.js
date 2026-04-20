@@ -7,14 +7,16 @@ function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
 
+   const fetchProduct = async () => {
+    const res = await API.get(`/products/${id}`);
+    setProduct(res.data);
+  };
+
   useEffect(() => {
     fetchProduct();
   }, [fetchProduct]);
 
-  const fetchProduct = async () => {
-    const res = await API.get(`/products/${id}`);
-    setProduct(res.data);
-  };
+ 
 
   const addToCart = async () => {
     await API.post("/cart/add", {

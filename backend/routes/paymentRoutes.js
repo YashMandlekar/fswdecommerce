@@ -41,7 +41,9 @@ router.post("/create", async (req, res) => {
     // ✅ NO VERSION STRING
     const response = await cashfree.PGCreateOrder(request);
 
-    res.json(response.data);
+    res.json({
+  payment_session_id: response.data.payment_session_id || response.data.data?.payment_session_id
+  });
 
   } catch (err) {
     console.error("❌ CREATE ERROR FULL:", err.response?.data || err.message);

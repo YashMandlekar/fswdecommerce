@@ -1,5 +1,6 @@
 import { useState } from "react";
 import API from "../services/api";
+import { load } from "@cashfreepayments/cashfree-js";
 
 function Checkout() {
   const [form, setForm] = useState({
@@ -47,13 +48,20 @@ function Checkout() {
       });
 
       // ✅ 3. REDIRECT TO CASHFREE (FROM BACKEND LINK)
-      const paymentLink = paymentRes.data?.payment_link;
+      const sessionId = paymentRes.data?.payment_session_id;
 
-      if (!paymentLink) {
-        throw new Error("Payment link not received");
-      }
+if (!sessionId) {
+  throw new Error("Session ID not received");
+}
 
-      window.location.href = paymentLink;
+const cashfree = await load({
+  mode: "sandbox",
+});
+
+cashfree.checkout({
+  paymentSessionId: sessionId,
+  redirectTarget: "_self",
+});
 
     } catch (err) {
       console.error("❌ PAYMENT ERROR:", err.response?.data || err.message);

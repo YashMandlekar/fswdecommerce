@@ -7,14 +7,18 @@ function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
 
-   const fetchProduct = async () => {
-    const res = await API.get(`/products/${id}`);
-    setProduct(res.data);
-  };
+   useEffect(() => {
+  async function fetchProduct() {
+    try {
+      const res = await API.get(`/products/${id}`);
+      setProduct(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
-  useEffect(() => {
-    fetchProduct();
-  }, [fetchProduct]);
+  fetchProduct();
+}, [id]);
 
  
 

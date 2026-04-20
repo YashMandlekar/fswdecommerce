@@ -35,7 +35,7 @@ function Home() {
 
   return (
     <div className="page container">
-      
+      <h2 style={{ marginBottom: "20px" }}>Products</h2>
 
       <div style={gridStyle}>
         {products.map((p) => (

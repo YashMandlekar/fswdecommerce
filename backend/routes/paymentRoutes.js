@@ -30,10 +30,10 @@ router.post("/create", async (req, res) => {
         customer_id: "user_" + Date.now(),
         customer_phone: "9999999999",
       },
-
+ 
       order_meta: {
-  return_url: `${process.env.CLIENT_URL}/payment-status?order_id={order_id}`,
-}
+      return_url: `${process.env.CLIENT_URL}/payment-status?order_id={order_id}`
+     }
     };
 
     console.log("FINAL REQUEST:", request);

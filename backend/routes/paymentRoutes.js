@@ -32,8 +32,8 @@ router.post("/create", async (req, res) => {
       },
 
       order_meta: {
-        return_url: `${process.env.CLIENT_URL}/payment-status?order_id={order_id}`,
-      },
+  return_url: `https://fswdecommerce-git-main-yash-mandlekars-projects.vercel.app/payment-status?order_id={order_id}`
+},
     };
 
     console.log("FINAL REQUEST:", request);

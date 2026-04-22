@@ -233,32 +233,34 @@ body {
 
 }
 
-/* ================= NAVBAR FIX FINAL ================= */
+/* ========= NAVBAR MOBILE FIX ONLY ========= */
 @media (max-width: 600px) {
 
-  /* 🔹 MAIN NAVBAR */
+  /* MAIN NAVBAR (top container) */
   div[style] {
-    flex-wrap: wrap !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px;
+    padding: 10px !important;
   }
 
-  /* 🔹 LOGO + TITLE */
+  /* LOGO SECTION */
   div[style] > div:first-child {
-    width: 100% !important;
     justify-content: center !important;
-    margin-bottom: 8px;
   }
 
-  /* 🔹 SEARCH BOX */
+  /* SEARCH BOX */
   div[style] > div:nth-child(2) {
     width: 100% !important;
-    margin-bottom: 8px;
   }
 
   div[style] input {
     width: 100% !important;
+    padding: 8px !important;
   }
 
-  /* 🔹 BUTTONS CONTAINER (RIGHT SIDE) */
+  /* BUTTON ROW */
   div[style] > div:last-child {
     display: flex !important;
     width: 100% !important;
@@ -266,10 +268,10 @@ body {
     gap: 6px;
   }
 
-  /* 🔹 BUTTON FIX */
+  /* BUTTON STYLE */
   div[style] > div:last-child button {
     flex: 1;
-    font-size: 11px !important;
+    font-size: 12px !important;
     padding: 6px !important;
     border-radius: 6px !important;
   }

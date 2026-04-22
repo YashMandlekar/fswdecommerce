@@ -183,58 +183,52 @@ body {
 /* ================= FORCE MOBILE FIX ================= */
 @media (max-width: 600px) {
 
-  /* 🔹 FORCE GRID (override inline gridStyle) */
+  /* GRID */
   .page.container > div {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 10px !important;
+    gap: 12px !important;
   }
 
-  /* 🔹 FORCE CARD STYLE (override cardStyle) */
+  /* CARD FIX */
   .page.container > div > div {
-    height: 250px !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
+
     padding: 10px !important;
     border-radius: 12px !important;
     background: #fff !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+
+    /* 🔥 REMOVE HEIGHT FIX */
+    height: auto !important;
+    min-height: 280px; /* adjust if needed */
   }
 
-  /* 🔹 IMAGE FIX (override imageStyle) */
+  /* IMAGE */
   .page.container img {
     width: 100% !important;
     height: 120px !important;
     object-fit: contain !important;
   }
 
-  /* 🔹 TITLE FIX */
+  /* TITLE */
   .page.container h3 {
-  font-size: 14px !important;
-  margin: 5px 0 !important;
+    font-size: 14px !important;
+    margin: 5px 0 !important;
 
-  /* FIX */
-  height: auto !important;
-  overflow: visible !important;
-
-  display: -webkit-box;
-  -webkit-line-clamp: 2;   /* max 2 lines */
-  -webkit-box-orient: vertical;
-}
-
-  /* 🔹 PRICE */
-  .page.container p {
-    font-size: 13px !important;
-    margin: 2px 0 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
-  /* 🔹 BUTTON FIX (stay inside card) */
+  /* BUTTON FIX */
   .page.container button {
     width: 100% !important;
-    font-size: 12px !important;
+    margin-top: auto !important; /* 🔥 push to bottom */
     padding: 8px !important;
-    margin-top: auto !important;
+    font-size: 13px !important;
   }
 
 }

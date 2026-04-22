@@ -232,3 +232,46 @@ body {
   }
 
 }
+
+/* ================= NAVBAR FIX FINAL ================= */
+@media (max-width: 600px) {
+
+  /* 🔹 MAIN NAVBAR */
+  div[style] {
+    flex-wrap: wrap !important;
+  }
+
+  /* 🔹 LOGO + TITLE */
+  div[style] > div:first-child {
+    width: 100% !important;
+    justify-content: center !important;
+    margin-bottom: 8px;
+  }
+
+  /* 🔹 SEARCH BOX */
+  div[style] > div:nth-child(2) {
+    width: 100% !important;
+    margin-bottom: 8px;
+  }
+
+  div[style] input {
+    width: 100% !important;
+  }
+
+  /* 🔹 BUTTONS CONTAINER (RIGHT SIDE) */
+  div[style] > div:last-child {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: space-between !important;
+    gap: 6px;
+  }
+
+  /* 🔹 BUTTON FIX */
+  div[style] > div:last-child button {
+    flex: 1;
+    font-size: 11px !important;
+    padding: 6px !important;
+    border-radius: 6px !important;
+  }
+
+}

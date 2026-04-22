@@ -177,3 +177,132 @@ body {
 .box:hover {
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 600px) {
+
+  /* 🔹 GLOBAL */
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* prevent side scroll */
+    font-family: Arial, sans-serif;
+  }
+
+  /* 🔹 NAVBAR */
+  .navbar {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 10px !important;
+  }
+
+  .logo {
+    width: 120px !important;
+    margin-bottom: 8px;
+  }
+
+  .nav-links {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: space-between !important;
+    gap: 6px;
+  }
+
+  .nav-links button {
+    flex: 1;
+    font-size: 12px !important;
+    padding: 8px !important;
+    border-radius: 6px;
+  }
+
+  /* 🔹 PRODUCTS GRID */
+  .products {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    padding: 10px !important;
+  }
+
+  /* 🔹 PRODUCT CARD (STRICT SAME SIZE) */
+  .product-card {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+
+    height: 260px !important;  /* SAME HEIGHT */
+    padding: 10px !important;
+    border-radius: 12px !important;
+    background: #fff !important;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  /* 🔹 IMAGE (CONTROLLED SIZE) */
+  .product-card img {
+    width: 100% !important;
+    height: 120px !important;
+    object-fit: contain !important;
+  }
+
+  /* 🔹 PRODUCT NAME */
+  .product-card h3 {
+    font-size: 14px !important;
+    margin: 5px 0 !important;
+    line-height: 1.2;
+    height: 32px;              /* FIX HEIGHT FOR ALIGNMENT */
+    overflow: hidden;
+  }
+
+  /* 🔹 PRICE */
+  .product-card p {
+    font-size: 13px !important;
+    margin: 4px 0;
+  }
+
+  /* 🔹 BUTTON (NEVER GO OUTSIDE) */
+  .product-card button {
+    width: 100% !important;
+    font-size: 12px !important;
+    padding: 8px !important;
+    border-radius: 6px;
+    margin-top: auto;   /* pushes button to bottom */
+  }
+
+  /* 🔹 CART PAGE */
+  .cart-container {
+    padding: 10px !important;
+  }
+
+  .cart-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .cart-item img {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: contain;
+  }
+
+  /* 🔹 CHECKOUT FORM */
+  .checkout-container {
+    padding: 10px !important;
+  }
+
+  .checkout-container input {
+    width: 100% !important;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .checkout-container button {
+    width: 100% !important;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+}

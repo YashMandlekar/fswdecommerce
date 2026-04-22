@@ -179,3 +179,56 @@ body {
 .box:hover {
   box-shadow: 0 6px 18px rgba(0,0,0,0.1);
 }
+
+/* ================= FORCE MOBILE FIX ================= */
+@media (max-width: 600px) {
+
+  /* 🔹 FORCE GRID (override inline gridStyle) */
+  .page.container > div {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  /* 🔹 FORCE CARD STYLE (override cardStyle) */
+  .page.container > div > div {
+    height: 250px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    padding: 10px !important;
+    border-radius: 12px !important;
+    background: #fff !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+  }
+
+  /* 🔹 IMAGE FIX (override imageStyle) */
+  .page.container img {
+    width: 100% !important;
+    height: 120px !important;
+    object-fit: contain !important;
+  }
+
+  /* 🔹 TITLE FIX */
+  .page.container h3 {
+    font-size: 14px !important;
+    margin: 5px 0 !important;
+    height: 32px !important;
+    overflow: hidden;
+  }
+
+  /* 🔹 PRICE */
+  .page.container p {
+    font-size: 13px !important;
+    margin: 2px 0 !important;
+  }
+
+  /* 🔹 BUTTON FIX (stay inside card) */
+  .page.container button {
+    width: 100% !important;
+    font-size: 12px !important;
+    padding: 8px !important;
+    margin-top: auto !important;
+  }
+
+}
